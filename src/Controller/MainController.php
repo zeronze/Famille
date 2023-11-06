@@ -16,16 +16,18 @@ class MainController extends AbstractController
         $rdvs = [];
 
         foreach ($events as $event) {
+            $user = $event->getUser(); // Récupérez l'objet utilisateur associé à l'événement
+            $userPseudo = $user ? $user->getPseudo() : ''; // Obtenez le pseudo de l'utilisateur, ou une chaîne vide s'il n'y a pas d'utilisateur associé
+        
             $rdvs[] = [
                 'id' => $event->getId(),
-                'start' => $event->getStart()->format('Y-m-d H:i:s'), // Utilisez des guillemets simples autour du format
-                'end' => $event->getEnd()->format('Y-m-d H:i:s'), // Utilisez des guillemets simples autour du format
+                'start' => $event->getStart()->format('Y-m-d H:i:s'),
+                'end' => $event->getEnd()->format('Y-m-d H:i:s'),
                 'title' => $event->getTitle(),
                 'description' => $event->getDescription(),
                 'backgroundColor' => $event->getBackgroundColor(),
-                'user' => $event->getUser(),
+                'userPseudo' => $userPseudo, // Ajoutez le pseudo de l'utilisateur
                 'allDay' => $event->isAllDay(),
-
             ]; 
         }
 

@@ -1,30 +1,37 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello HomeController!{% endblock %}
+{% block title %}Calendrier familial{% endblock %}
 
 {% block body %}
-<div class="container mt-4">
+<div class="container mt-5">
     <div class="row justify-content-center">
-        <div class="col-12 col-md-6 text-center">
+        <div class="col-md-6 text-center">
+         <img height="200" src="{{ asset('images/round_logo_of_a_calendar_style-Origami_seed-0ts-1699103782_idx-0-modified.png') }}" alt="">
+            <h1>Bienvenue sur notre calendrier familial</h1>
+            <p>Gérez et partagez vos événements en toute simplicité.</p>
+
             {% if app.user %}
-                {% if 'ROLE_ADMIN' in app.user.roles %}
-                    <a class="btn btn-primary m-3" href="{{ path('app_parametre_admin') }}">
-                        Administration
+                <div class="mt-4">
+                    {% if 'ROLE_ADMIN' in app.user.roles %}
+                        <a class="btn btn-primary m-3" href="{{ path('app_parametre_admin') }}">
+                            Administration
+                        </a>
+                    {% endif %}
+                    
+                    <a class="btn btn-info m-3" href="{{ path('app_main') }}">
+                        Voir le calendrier
                     </a>
-                {% endif %}
-                
-                <a class="btn btn-info m-3" href="{{ path('app_main') }}">
-                    Calendrier
-                </a>
-              
+                </div>
             {% else %}
-                <a class="btn btn-primary m-3" href="{{ path('app_login') }}">
-                  Connexion
-                </a>
-                
-                <a class="btn btn-success" href="{{ path('app_register') }}">
-                    Inscription
-                </a>
+                <div class="mt-4">
+                    <a class="btn btn-primary m-3" href="{{ path('app_login') }}">
+                        Connexion
+                    </a>
+                    
+                    <a class="btn btn-success" href="{{ path('app_register') }}">
+                        Inscription
+                    </a>
+                </div>
             {% endif %}
         </div>
     </div>

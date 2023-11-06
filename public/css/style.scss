@@ -82,30 +82,3 @@ box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rg
 
 
 
-/* Personnalisation du style de la boîte d'alerte */
-.alert-box {
-  background-color: #f0f0f0;
-  border: 2px solid #ccc;
-  border-radius: 5px;
-  padding: 10px;
-  color: #333;
-  font-size: 16px;
-  text-align: center;
-}
-
-/* Style pour le bouton "OK" dans la boîte d'alerte */
-.alert-box button {
-  background-color: #007bff;
-  color: #fff;
-  border: none;
-  padding: 5px 10px;
-  margin-top: 10px;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-.alert-box button:hover {
-  background-color: #0056b3;
-}
-
-

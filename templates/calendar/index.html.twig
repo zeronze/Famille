@@ -30,7 +30,10 @@
                     <td>{{ calendar.end ? calendar.end|date('d/m/Y H:i') : '' }}</td>
                     <td>{{ calendar.description }}</td>
                     <td>{{ calendar.allDay ? 'Oui' : 'Non' }}</td>
-                    <td>{{ calendar.backgroundColor }}</td>
+                   <td>
+  <div style="background-color: {{ calendar.backgroundColor }}; width: 50px; height: 20px;"></div>
+</td>
+
                     <td>
                         <a href="{{ path('app_calendar_show', {'id': calendar.id}) }}" class="btn btn-info mt-2">Voir</a>
                         <a href="{{ path('app_calendar_edit', {'id': calendar.id}) }}" class="btn btn-warning mt-2">Modifier</a>
