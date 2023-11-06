@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Log in!{% endblock %}
+
+{% block body %}
+<div class="container auth">
+  <div class="row">
+    <div class="col-12">
+      <div class="auth__header">
+    <div class="auth__logo">
+    <img height="200" src="{{ asset('images/round_logo_of_a_calendar_style-Origami_seed-0ts-1699103782_idx-0-modified.png') }}" alt="">
+</div>
+
+      </div>
+      <div class="auth__body">
+        <form class="auth__form" autocomplete="off" method="post">
+          <div class="auth__form_body">
+            {% if error %}
+              <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+            {% endif %}
+
+            {% if app.user %}
+              <div class="mb-3">
+                You are logged in as {{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}">Logout</a>
+              </div>
+            {% endif %}
+
+            <h1 class="auth__form_title">Connexion</h1>
+            <div class="mb-3">
+              <label for="inputEmail" class="form-label text-uppercase small">Email</label>
+              <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" autocomplete="email" required autofocus>
+            </div>
+            <div class="mb-3">
+              <label for="inputPassword" class="form-label text-uppercase small">Mot De Passe</label>
+              <input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
+            </div>
+            <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+          </div>
+          <div class="auth__form_actions">
+            <button class="btn btn-primary btn-lg btn-block" type="submit">Connexion</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

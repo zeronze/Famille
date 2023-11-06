@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello HomeController!{% endblock %}
+
+{% block body %}
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-12 col-md-6 text-center">
+            {% if app.user %}
+                {% if 'ROLE_ADMIN' in app.user.roles %}
+                    <a class="btn btn-primary m-3" href="{{ path('app_parametre_admin') }}">
+                        Administration
+                    </a>
+                {% endif %}
+                
+                <a class="btn btn-info m-3" href="{{ path('app_main') }}">
+                    Calendrier
+                </a>
+              
+            {% else %}
+                <a class="btn btn-primary m-3" href="{{ path('app_login') }}">
+                  Connexion
+                </a>
+                
+                <a class="btn btn-success" href="{{ path('app_register') }}">
+                    Inscription
+                </a>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}

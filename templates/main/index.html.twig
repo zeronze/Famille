@@ -1,0 +1,99 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Calendrier{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <style>
+        /* CSS pour les messages d'erreur */
+        .alert-danger {
+            color: #721c24;
+            background-color: #f8d7da;
+            border-color: #f5c6cb;
+        }
+
+        /* CSS pour les messages de succès */
+        .alert-success {
+            color: #155724;
+            background-color: #d4edda;
+            border-color: #c3e6cb;
+        }
+    </style>
+{% endblock %}
+
+
+{% block body %}
+<div class="container">
+
+
+<a href="{{ path('app_calendar_index') }}" class="m-5 btn btn-primary">Gérer les rendez-vous</a>
+    <div id="calendrier"></div>
+
+    
+</div>
+{% endblock %}
+
+
+{% block javascripts %}
+  <script>
+    window.onload = () => {
+        let calendarElt = document.querySelector("#calendrier")
+
+        let calendar = new FullCalendar.Calendar(calendarElt, {
+            initialView: 'timeGridWeek',
+            locale: 'fr',
+            timeZone: 'Europe/Paris',
+            headerToolbar: {
+                start: 'prev,next today',
+                center: 'title',
+                end: 'dayGridMonth,timeGridWeek'
+            },
+            events: {{ data|raw }},
+            editable: true,
+            eventResizableFromStart: true
+        })
+
+        calendar.on('eventChange', (e) => {
+
+            
+            let url = `/api/${e.event.id}/edit`
+            let donnees = {
+                "title": e.event.title,
+                "description": e.event.extendedProps.description,
+                "start": e.event.start,
+                "end": e.event.end,
+                "backgroundColor": e.event.backgroundColor,
+                "borderColor": e.event.borderColor,
+                "textColor": e.event.textColor,
+                "allDay": e.event.allDay
+            }
+            
+            let xhr = new XMLHttpRequest
+
+            xhr.open("PUT", url)
+            xhr.send(JSON.stringify(donnees))
+        })
+
+        calendar.render()
+    }
+
+
+    function displayFlashMessage(message, messageType) {
+    var alertClass = messageType === 'success' ? 'alert-success' : 'alert-warning';
+    var alertElement = document.createElement('div');
+    alertElement.classList.add('alert', alertClass);
+    alertElement.textContent = message;
+
+    // Display the alert at the top of the page
+    var container = document.querySelector('.container');
+    container.insertBefore(alertElement, container.firstChild);
+
+    // Remove the alert after a delay (e.g., 3 seconds)
+    setTimeout(function() {
+        alertElement.remove();
+    }, 3000);
+}
+
+</script>
+
+{% endblock %}

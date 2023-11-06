@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Inscription{% endblock %}
+
+{% block body %}
+<div class="container auth">
+  <div class="row">
+    <div class="col-12">
+      <div class="auth__header">
+        <div class="auth__logo">
+          <img height="200" src="{{ asset('images/round_logo_of_a_calendar_style-Origami_seed-0ts-1699103782_idx-0-modified.png') }}" alt="">
+        </div>
+      </div>
+      <div class="auth__body">
+        <form class="auth__form" method="post">
+          <div class="auth__form_body">
+            {% for flash_error in app.flashes('verify_email_error') %}
+              <div class="alert alert-danger" role="alert">{{ flash_error }}</div>
+            {% endfor %}
+
+            <h1 class="auth__form_title">Inscription</h1>
+            {{ form_errors(registrationForm) }}
+            {{ form_start(registrationForm) }}
+            <div class="mb-3">
+              <label for="inputEmail" class="form-label text-uppercase small"></label>
+              {{ form_row(registrationForm.email) }}
+            </div>
+            <div class="mb-3">
+              <label for="inputPseudo" class="form-label text-uppercase small"></label>
+              {{ form_row(registrationForm.pseudo, {
+                label: 'Pseudo'
+              }) }}
+            </div>
+            <div class="mb-3">
+              <label for="inputPassword" class="form-label text-uppercase small"></label>
+              {{ form_row(registrationForm.plainPassword, {
+                label: 'Mot de Passe'
+              }) }}
+            </div>
+            <div class="mb-3">
+              {{ form_row(registrationForm.agreeTerms) }}
+            </div>
+            <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+          </div>
+          <div class="auth__form_actions">
+            <button class="btn btn-primary btn-lg btn-block" type="submit"></button>
+          </div>
+          {{ form_end(registrationForm) }}
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
