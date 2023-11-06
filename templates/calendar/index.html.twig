@@ -6,12 +6,14 @@
 <div class="container">
     <h1 class="mt-5">Calendrier</h1>
 
-    <a href="{{ path('app_calendar_new') }}" class="btn btn-primary mb-3">Ajouter un rendez-vous</a>
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <a href="{{ path('app_calendar_new') }}" class="btn btn-primary">Ajouter un rendez-vous</a>
+        <a class="btn btn-info" href="{{ path('app_main') }}">Voir le calendrier</a>
+    </div>
 
     <table class="table table-striped">
         <thead>
             <tr>
-                
                 <th>Titre</th>
                 <th>Début</th>
                 <th>Fin</th>
@@ -24,24 +26,24 @@
         <tbody>
             {% for calendar in calendars %}
                 <tr>
-                 
                     <td>{{ calendar.title }}</td>
                     <td>{{ calendar.start ? calendar.start|date('d/m/Y H:i') : '' }}</td>
                     <td>{{ calendar.end ? calendar.end|date('d/m/Y H:i') : '' }}</td>
                     <td>{{ calendar.description }}</td>
                     <td>{{ calendar.allDay ? 'Oui' : 'Non' }}</td>
-                   <td>
-  <div style="background-color: {{ calendar.backgroundColor }}; width: 50px; height: 20px;"></div>
-</td>
-
                     <td>
-                        <a href="{{ path('app_calendar_show', {'id': calendar.id}) }}" class="btn btn-info mt-2">Voir</a>
-                        <a href="{{ path('app_calendar_edit', {'id': calendar.id}) }}" class="btn btn-warning mt-2">Modifier</a>
+                        <div style="background-color: {{ calendar.backgroundColor }}; width: 50px; height: 20px;"></div>
+                    </td>
+                    <td>
+                        <div class="btn-group">
+                            <a href="{{ path('app_calendar_show', {'id': calendar.id}) }}" class="btn btn-info">Voir</a>
+                            <a href="{{ path('app_calendar_edit', {'id': calendar.id}) }}" class="btn btn-warning">Modifier</a>
+                        </div>
                     </td>
                 </tr>
             {% else %}
                 <tr>
-                    <td colspan="8">Aucun enregistrement trouvé</td>
+                    <td colspan="7">Aucun enregistrement trouvé</td>
                 </tr>
             {% endfor %}
         </tbody>
