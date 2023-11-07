@@ -44,7 +44,9 @@ class RegistrationFormType extends AbstractType
                         'message' => 'Vous devez accepter nos conditions.',
                     ]),
                 ],
+                'label' => 'Accepter les conditions', // Changez le texte du label ici
             ])
+            
             ->add('plainPassword', PasswordType::class, [
                 'mapped' => false,
                 'attr' => ['autocomplete' => 'new-password'],
