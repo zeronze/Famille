@@ -1,12 +1,52 @@
-<div class="container-fluid mt-5">
-
-<footer class="bg-light text-center text-lg-start">
-  <!-- Copyright -->
-  <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
-    © 2020 Copyright:
-    <a class="text-dark" href="https://mdbootstrap.com/">MDBootstrap.com</a>
+<footer>
+  <div class="container mt-5">
+    <div class="card">
+      <div class="card-body">
+      
+        <div class="row">
+          <div class="col-md-2">
+            <ul class="list-unstyled">
+              <li><h6>Navigation</h6></li>
+              <li><a href="{{ path('app_home') }}" class="btn btn-link link-underline link-underline-opacity-0">Accueil</a></li>
+            </ul>
+          </div>
+          <div class="col-md-2">
+            <ul class="list-unstyled">
+              <li><h6>Contact</h6></li>
+              <li><a href="/app_contact" class="btn btn-link link-underline link-underline-opacity-0">Contact</a></li>
+            </ul>
+          </div>
+          <div class="col-md-2">
+            <ul class="list-unstyled">
+              <li><h6>Plus d'info</h6></li>
+              <li><a href="/app_contact" class="btn btn-link link-underline link-underline-opacity-0">Info</a></li>
+            </ul>
+          </div>
+          <div class="col-md-2">
+            <ul class="list-unstyled">
+              <li><h6>Formulaire</h6></li>
+              <!-- Ajoutez des liens vers "Formulaire" ici -->
+            </ul>
+            <ul class="list-unstyled">
+              <li><a href="{{ path('app_register') }}" class="btn btn-link link-underline link-underline-opacity-0">Inscription</a></li>
+              <li><a href="{{ path('app_login') }}" class="btn btn-link link-underline link-underline-opacity-0">Connexion</a></li>
+            </ul>
+          </div>
+          <div class="col-md-2">
+          
+            <ul class="list-unstyled">
+               <li><h6>Information Légales</h6></li>
+              <li><a href="/politique-de-confidentialite" class="btn btn-link link-underline link-underline-opacity-0 link   link link-underline link-underline-opacity-0-underline-opacity-0">Politique de confidentialité</a></li>
+              <li><a href="/conditions-generales" class="btn btn-link link-underline link-underline-opacity-0">Conditions générales</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="image-footer col-md-12">
+        <img src="{{ asset('images/a_calendar_image_for_a_website_footer_style-Low_Poly_width-1536_height-640_aspect-21-9_seed-0ts-1699344665_idx-0.png') }}" class="card-img-bottom" alt="...">
+      </div>
+    </div>
   </div>
-  <!-- Copyright -->
 </footer>
-
-</div>

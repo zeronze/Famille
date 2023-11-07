@@ -1,14 +1,18 @@
+@charset "UTF-8";
 @import url("https://fonts.googleapis.com/css?family=Roboto");
 body {
-  background-color: lightgray;
+  background-image: linear-gradient(45deg, rgba(254, 246, 210, 0.53) 0%, rgba(254, 246, 210, 0.53) 14.286%, rgba(221, 240, 216, 0.53) 14.286%, rgba(221, 240, 216, 0.53) 28.572%, rgba(188, 233, 223, 0.53) 28.572%, rgba(188, 233, 223, 0.53) 42.858%, rgba(156, 227, 229, 0.53) 42.858%, rgba(156, 227, 229, 0.53) 57.144%, rgba(123, 220, 235, 0.53) 57.144%, rgba(123, 220, 235, 0.53) 71.43%, rgba(90, 214, 242, 0.53) 71.43%, rgba(90, 214, 242, 0.53) 85.716%, rgba(57, 207, 248, 0.53) 85.716%, rgba(57, 207, 248, 0.53) 100.002%), linear-gradient(135deg, rgb(246, 99, 200) 0%, rgb(246, 99, 200) 12.5%, rgb(223, 98, 196) 12.5%, rgb(223, 98, 196) 25%, rgb(199, 97, 192) 25%, rgb(199, 97, 192) 37.5%, rgb(176, 96, 188) 37.5%, rgb(176, 96, 188) 50%, rgb(152, 95, 184) 50%, rgb(152, 95, 184) 62.5%, rgb(129, 94, 180) 62.5%, rgb(129, 94, 180) 75%, rgb(105, 93, 176) 75%, rgb(105, 93, 176) 87.5%, rgb(82, 92, 172) 87.5%, rgb(82, 92, 172) 100%);
 }
 
 body {
   font-family: "Roboto", sans-serif;
 }
 
+.auth {
+  border-radius: 15px; /* Ajout de la propriété border-radius pour arrondir les coins */
+}
 .auth__header {
-  padding: 13vh 1rem calc(11vh + 35px);
+  padding: 5vh 1rem calc(7vh + 25px);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -17,7 +21,8 @@ body {
   background-size: cover;
   background-position: center center;
   position: relative;
-  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.3);
+  border-radius: 0.5rem;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
 }
 .auth__header:before {
   content: "";
@@ -73,4 +78,14 @@ body {
 
 .fc-event-main {
   box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+}
+
+.card-text {
+  color: #000;
+  font-weight: bold;
+}
+
+h5.card-title {
+  color: #000;
+  font-weight: bold;
 }/*# sourceMappingURL=style.css.map */

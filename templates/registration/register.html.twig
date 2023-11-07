@@ -1,54 +1,125 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Inscription{% endblock %}
+{% block title %}Inscription
+{% endblock %}
+     {% block stylesheets %}
+      
+<style>
+#password-validation-icons {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px; /* Espacement entre chaque icône et texte */
+  color: #3280e4;
+  flex-direction :column
+
+}
+</style>
+        {% endblock %}
 
 {% block body %}
-<div class="container auth">
-  <div class="row">
-    <div class="col-12">
-      <div class="auth__header">
-        <div class="auth__logo">
-          <img height="200" src="{{ asset('images/round_logo_of_a_calendar_style-Origami_seed-0ts-1699103782_idx-0-modified.png') }}" alt="">
-        </div>
-      </div>
-      <div class="auth__body">
-        <form class="auth__form" method="post">
-          <div class="auth__form_body">
-            {% for flash_error in app.flashes('verify_email_error') %}
-              <div class="alert alert-danger" role="alert">{{ flash_error }}</div>
-            {% endfor %}
+	<div class="container auth mt-5">
+		<div class="row">
+			<div class="col-12">
+				<div class="auth__header">
+					<div class="auth__logo">
+						<img height="200" src="{{ asset('images/round_logo_of_a_calendar_style-Origami_seed-0ts-1699103782_idx-0-modified.png') }}" alt="">
+					</div>
+				</div>
+				<div class="auth__body">
+					<form class="auth__form" method="post">
+						<div class="auth__form_body">
+							{% for flash_error in app.flashes('verify_email_error') %}
+								<div class="alert alert-danger" role="alert">{{ flash_error }}</div>
+							{% endfor %}
 
-            <h1 class="auth__form_title">Inscription</h1>
-            {{ form_errors(registrationForm) }}
-            {{ form_start(registrationForm) }}
-            <div class="mb-3">
-              <label for="inputEmail" class="form-label text-uppercase small"></label>
-              {{ form_row(registrationForm.email) }}
-            </div>
-            <div class="mb-3">
-              <label for="inputPseudo" class="form-label text-uppercase small"></label>
-              {{ form_row(registrationForm.pseudo, {
+							<h1 class="auth__form_title">Inscription</h1>
+							{{ form_errors(registrationForm) }}
+							{{ form_start(registrationForm) }}
+							<div class="mb-3">
+								<label for="inputEmail" class="form-label text-uppercase small"></label>
+								{{ form_row(registrationForm.email) }}
+							</div>
+							<div class="mb-3">
+								<label for="inputPseudo" class="form-label text-uppercase small"></label>
+								{{ form_row(registrationForm.pseudo, {
                 label: 'Pseudo'
               }) }}
-            </div>
-            <div class="mb-3">
-              <label for="inputPassword" class="form-label text-uppercase small"></label>
-              {{ form_row(registrationForm.plainPassword, {
-                label: 'Mot de Passe'
-              }) }}
-            </div>
-            <div class="mb-3">
-              {{ form_row(registrationForm.agreeTerms) }}
-            </div>
-            <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
-          </div>
-          <div class="auth__form_actions">
-            <button class="btn btn-primary btn-lg btn-block" type="submit">Envoyer</button>
-          </div>
-          {{ form_end(registrationForm) }}
-        </form>
-      </div>
-    </div>
-  </div>
-</div>
+							</div>
+							<div class="mb-3">
+								<label for="inputPassword" class="form-label text-uppercase small"></label>
+								{{ form_row(registrationForm.plainPassword, {
+    label: 'Mot de Passe'
+  }) }}
+							</div>
+
+							<div id="password-validation-icons"></div>
+							<div class="mb-3">
+								{{ form_row(registrationForm.agreeTerms) }}
+							</div>
+							<input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+						</div>
+						<div class="auth__form_actions">
+							<button class="btn btn-primary btn-lg btn-block" type="submit">Envoyer</button>
+						</div>
+						{{ form_end(registrationForm) }}
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script>
+	document.addEventListener("DOMContentLoaded", function () {
+  const passwordInput = document.querySelector("#registration_form_plainPassword");
+
+  passwordInput.addEventListener("input", function () {
+    const password = passwordInput.value;
+    const uppercaseRegex = /[A-Z]/;
+    const lowercaseRegex = /[a-z]/;
+    const digitRegex = /\d/;
+    const specialCharRegex = /[#?!@$%^&*-]/;
+
+    const isUppercaseValid = uppercaseRegex.test(password);
+    const isLowercaseValid = lowercaseRegex.test(password);
+    const isDigitValid = digitRegex.test(password);
+    const isSpecialCharValid = specialCharRegex.test(password);
+    const isLengthValid = password.length >= 14; // Vérification de la longueur
+
+    const validationIcons = document.querySelector("#password-validation-icons");
+    validationIcons.innerHTML = "";
+
+    if (isUppercaseValid) {
+      validationIcons.innerHTML += 'Majuscule <i class="fas fa-check text-success"></i>';
+    } else {
+      validationIcons.innerHTML += 'Majuscule <i class="fas fa-times text-danger"></i>';
+    }
+
+    if (isLowercaseValid) {
+      validationIcons.innerHTML += 'Minuscule <i class="fas fa-check text-success"></i>';
+    } else {
+      validationIcons.innerHTML += 'Minuscule <i class="fas fa-times text-danger"></i>';
+    }
+
+    if (isDigitValid) {
+      validationIcons.innerHTML += 'Chiffre <i class="fas fa-check text-success"></i>';
+    } else {
+      validationIcons.innerHTML += 'Chiffre <i class="fas fa-times text-danger"></i>';
+    }
+
+    if (isSpecialCharValid) {
+      validationIcons.innerHTML += 'caractère spécial <i class="fas fa-check text-success"></i>';
+    } else {
+      validationIcons.innerHTML += 'caractère spécial <i class="fas fa-times text-danger"></i>';
+    }
+
+    if (isLengthValid) {
+      validationIcons.innerHTML += 'Longueur suffisante <i class="fas fa-check text-success"></i>';
+    } else {
+      validationIcons.innerHTML += 'Longueur suffisante <i class="fas fa-times text-danger"></i>';
+    }
+  });
+});
+
+	</script>
+
 {% endblock %}

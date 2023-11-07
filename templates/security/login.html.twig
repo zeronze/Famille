@@ -3,7 +3,7 @@
 {% block title %}Log in!{% endblock %}
 
 {% block body %}
-<div class="container auth">
+<div class="container auth mt-5">
   <div class="row">
     <div class="col-12">
       <div class="auth__header">
@@ -34,6 +34,12 @@
               <label for="inputPassword" class="form-label text-uppercase small">Mot De Passe</label>
               <input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
             </div>
+         
+
+<div class="mb-3">
+    <a href="{{ path('app_forgot_password_request') }}" class="forgot-password-link">Mot de passe oublié ?</a>
+</div>
+
             <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
           </div>
           <div class="auth__form_actions">

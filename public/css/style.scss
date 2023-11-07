@@ -1,48 +1,53 @@
 
 
 body {
-    background-color: lightgray;
+   background-image: linear-gradient(45deg, rgba(254, 246, 210, 0.53) 0%, rgba(254, 246, 210, 0.53) 14.286%,rgba(221, 240, 216, 0.53) 14.286%, rgba(221, 240, 216, 0.53) 28.572%,rgba(188, 233, 223, 0.53) 28.572%, rgba(188, 233, 223, 0.53) 42.858%,rgba(156, 227, 229, 0.53) 42.858%, rgba(156, 227, 229, 0.53) 57.144%,rgba(123, 220, 235, 0.53) 57.144%, rgba(123, 220, 235, 0.53) 71.42999999999999%,rgba(90, 214, 242, 0.53) 71.43%, rgba(90, 214, 242, 0.53) 85.71600000000001%,rgba(57, 207, 248, 0.53) 85.716%, rgba(57, 207, 248, 0.53) 100.002%),linear-gradient(135deg, rgb(246, 99, 200) 0%, rgb(246, 99, 200) 12.5%,rgb(223, 98, 196) 12.5%, rgb(223, 98, 196) 25%,rgb(199, 97, 192) 25%, rgb(199, 97, 192) 37.5%,rgb(176, 96, 188) 37.5%, rgb(176, 96, 188) 50%,rgb(152, 95, 184) 50%, rgb(152, 95, 184) 62.5%,rgb(129, 94, 180) 62.5%, rgb(129, 94, 180) 75%,rgb(105, 93, 176) 75%, rgb(105, 93, 176) 87.5%,rgb(82, 92, 172) 87.5%, rgb(82, 92, 172) 100%);
 }
 @import url('https://fonts.googleapis.com/css?family=Roboto');
 body{
   font-family: 'Roboto', sans-serif;
 }
-.auth{
-  &__header{
-    padding: 13vh 1rem calc(11vh + 35px);
+.auth {
+  border-radius: 15px; /* Ajout de la propriété border-radius pour arrondir les coins */
+
+  &__header {
+    padding: 5vh 1rem calc(7vh + 25px);
+
     display: flex;
     align-items: center;
     justify-content: center;
     background-color: #f0f0f0;
     background-image: linear-gradient(#3280e4, #584dc3);
-    // background-image: url(https://picsum.photos/1500/1200/?random);
     background-size: cover;
     background-position: center center;
     position: relative;
-    box-shadow: 0 3px 5px rgba(#000, 0.3);
-    &:before{
+    border-radius: 0.5rem;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+    &:before {
       content: "";
       position: absolute;
       left: 0;
       top: 0;
       right: 0;
       bottom: 0;
-      // background-image: linear-gradient(rgba(#000, 0), rgba(#000, 0.7));
     }
   }
-  &__logo{
+
+  &__logo {
     position: relative;
     z-index: 18;
     background: #fff;
     padding: 10px;
     border-radius: 50%;
-    box-shadow: 0 2px 7px rgba(#000, 0.15);
+    box-shadow: 0 2px 7px rgba(0, 0, 0, 0.15);
     overflow: hidden;
   }
-  &__body{
+
+  &__body {
     padding-bottom: 2rem;
   }
-  &__form{
+
+  &__form {
     min-width: 280px;
     max-width: 340px;
     margin: auto;
@@ -50,24 +55,24 @@ body{
     padding: 0 10px;
     position: relative;
     z-index: 9;
-    &_body{
+    &_body {
       padding: 0.7rem 1.5rem 35px;
       border-radius: 0.5rem;
       background: #fff;
       border: 1px solid #eee;
-      box-shadow: 0 4px 10px rgba(#000, 0.15);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
     }
-    &_title{
+    &_title {
       font-size: 1.3rem;
       text-align: center;
       text-transform: uppercase;
       margin-bottom: 1.2rem;
     }
-    &_actions{
+    &_actions {
       text-align: center;
       padding: 0 2rem;
       margin-top: -25px;
-      .btn{
+      .btn {
         border-radius: 30px;
         box-shadow: 0 2px 12px rgba(#3280e4, 0.5);
       }
@@ -76,9 +81,20 @@ body{
 }
 
 
+
+
 .fc-event-main{
 box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
 }
 
+.card-text{
+  color: #000;
+  font-weight: bold;
+}
 
+
+h5.card-title {
+  color: #000;
+  font-weight: bold;
+}
 

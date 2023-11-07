@@ -12,6 +12,8 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\IsTrue;
 use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\NotBlank;
+use Symfony\Component\Validator\Constraints\Regex;
+use Symfony\Component\Validator\Constraints\RegexValidator;
 
 class RegistrationFormType extends AbstractType
 {
@@ -22,13 +24,15 @@ class RegistrationFormType extends AbstractType
             ->add('pseudo', TextType::class, [
                 'constraints' => [
                     new NotBlank([
-                        'message' => 'Please enter a username',
+                        'message' => 'Merci d entrer un nom d utilisateur',
                     ]),
                     new Length([
                         'min' => 3,
                         'max' => 50,
-                        'minMessage' => 'Your username should be at least {{ limit }} characters',
-                        'maxMessage' => 'Your username should not exceed {{ limit }} characters',
+                        'minMessage' => '
+                        Votre nom d utilisateur doit comporter au moins {{ limit }} caractères',
+                        'maxMessage' => '
+                        Votre nom d utilisateur ne doit pas dépasser {{ limit }} caractères',
                     ]),
                     // Ajoutez ici d'autres contraintes, si nécessaire
                 ],
@@ -37,7 +41,7 @@ class RegistrationFormType extends AbstractType
                 'mapped' => false,
                 'constraints' => [
                     new IsTrue([
-                        'message' => 'You should agree to our terms.',
+                        'message' => 'Vous devez accepter nos conditions.',
                     ]),
                 ],
             ])
@@ -45,18 +49,14 @@ class RegistrationFormType extends AbstractType
                 'mapped' => false,
                 'attr' => ['autocomplete' => 'new-password'],
                 'constraints' => [
-                    new NotBlank([
-                        'message' => 'Please enter a password',
-                    ]),
-                    new Length([
-                        'min' => 6,
-                        'minMessage' => 'Your password should be at least {{ limit }} characters',
-                        'max' => 4096,
+                    new Regex([
+                        'pattern' => '/^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[#?!@$%^&*-]).{14,}$/',
+
+                        'message' => 'Il faut un mot de passe de 14 caractères avec au moins 1 majuscule, 1 minuscule, 1 chiffre, et 1 caractère spécial.',
                     ]),
                 ],
             ]);
     }
-
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
